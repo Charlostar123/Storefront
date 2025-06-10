@@ -1,19 +1,23 @@
-
 {% extends "base.html" %}
 
 {% block title %}{{ product.title }}{% endblock %}
 
 {% block content %}
 <h2>{{ product.title }}</h2>
+
+{% if product.image %}
+  <img src="{{ product.image.url }}" alt="{{ product.title }}" style="max-width: 400px;">
+{% endif %}
+
 <p><strong>Price:</strong> ${{ product.price }}</p>
 <p><strong>In stock:</strong> {{ product.inventory }}</p>
 <p><strong>Description:</strong></p>
 <p>{{ product.description }}</p>
+
+<form method="post" action="{% url 'add-to-cart' product.id %}">
+  {% csrf_token %}
+  <button type="submit">🛒 Add to Cart</button>
+</form>
+
 <a href="{% url 'product-list' %}">← Back to products</a>
 {% endblock %}
-{% if product.image %}
-  <img src="{{ product.image.url }}" alt="{{ product.title }}" style="max-width: 400px;">
-{% else %}
-  <p>No image available</p>
-{% endif %}
-
