@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Storefront{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1><a href="/">🛒 Storefront</a></h1>
+    <hr>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <hr>
+    <p>&copy; {{ now|date:'Y' }} Storefront Inc.</p>
+  </footer>
+</body>
+</html>

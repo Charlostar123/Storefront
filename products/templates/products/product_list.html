@@ -1,0 +1,17 @@
+
+{% block title %}All Products{% endblock %}
+
+{% block content %}
+<h2>All Products</h2>
+<ul>
+  {% for product in products %}
+    <li>
+      <a href="{% url 'product-detail' product.id %}">
+        {{ product.title }} - ${{ product.price }}
+      </a>
+    </li>
+  {% empty %}
+    <li>No products found.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
